@@ -46,12 +46,12 @@ module.exports = function(grunt) {
                 }, {
                     expand: true,
                     src: [ './**/*.css' ],
-                    dest: './dist/styles',
+                    dest: './dist/css',
                     cwd: './app/styles'
                 }, {
                     expand: true,
                     src: [ './**/*.js' ],
-                    dest: './dist/scripts',
+                    dest: './dist/js',
                     cwd: './app/scripts'
                 }, {
                     expand: true,
