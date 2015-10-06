@@ -42,7 +42,6 @@ server.start( onServerStarted );
 
 function onServerStarted() {
     console.log( 'Server running on port ', port );
-    console.log(routes);
 }
 
 function createDirectoryRoute( directory ) {
