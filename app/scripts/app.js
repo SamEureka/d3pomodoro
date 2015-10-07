@@ -89,7 +89,7 @@ function buttonSwap(type){
 // D3 Shit
 
 var updateData = function(){
-  var TaskArray = JSON.parse(localStorage.getItem('taskArray'));
+  var TaskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
   currentTask = {
     'id': new Date().getTime(),
     'task': document.getElementById('taskInput').value,

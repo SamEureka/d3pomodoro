@@ -89,7 +89,7 @@ function buttonSwap(type){
 // D3 Shit
 
 var updateData = function(){
-  var TaskArray = JSON.parse(localStorage.getItem('taskArray'));
+  var TaskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
   currentTask = {
     'id': new Date().getTime(),
     'task': document.getElementById('taskInput').value,
@@ -140,7 +140,7 @@ d3.select("#nThing").on("input", function() {
 });
 
 function update(nThing) {
-localStorage.setItem('nThing', {nThing});
+localStorage.setItem('nThing', nThing);
   // adjust the text on the range slider
   // d3.select("#nRadius-value").text(nRadius);
   // d3.select("#nRadius").property("value", nRadius);

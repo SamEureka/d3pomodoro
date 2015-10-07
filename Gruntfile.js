@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask( 'run', [ 'hapi', 'watch' ]);
 
-    grunt.registerTask( 'pages', [ 'clean', 'copy', 'gh-pages' ]);
+    grunt.registerTask( 'pages', [ 'copy', 'gh-pages' ]);
 
     grunt.initConfig({
 
