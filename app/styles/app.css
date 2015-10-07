@@ -5,3 +5,61 @@
 .margin-roof {
 	margin-top: 5px;
 }
+
+.task-list {
+	font-size: 2rem;
+}
+
+.task-done {
+	/*background-color: rgba(80, 195, 85, 0.50);*/
+	padding-left: 5px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 0;
+	padding-top: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	border-radius: 2px;
+	list-style: none;
+}
+
+.task {
+	/*background-color: rgba(255, 0, 0, 0.50);*/
+	padding-left: 5px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 0;
+	padding-top: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	border-radius: 2px;
+	list-style: none;
+}
+
+.font-x1 {
+	font-size: 1rem;
+}
+
+.font-x1-5 {
+	font-size: 1.5rem;
+} 
+
+.font-x2 {
+	font-size: 2rem;
+}
+
+.hidden {
+	display: none;
+}
+
+.pomo {
+	position: relative;
+	left: 30px;
+	top: 20px;
+	z-index: 1;
+}
+
+.arrow {
+	position: relative;
+	left: 30px;
+	top: 80px;
+	z-index: 1;
+}

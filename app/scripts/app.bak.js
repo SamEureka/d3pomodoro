@@ -1,12 +1,10 @@
-
-
 // Global variables
 var interval = null,
     time = 65,
     onBreak = false,
-    workUnits = 0,
-    alarm = new buzz.sound("/sounds/ring.mp3", {preload: true}),
-    currentTask = {};
+    workUnits = 0;
+    alarm = new buzz.sound("/sounds/ring.mp3", {preload: true});
+
 
 // Starts the interval, calls timer function 
 var startTimer = function(){
@@ -84,72 +82,10 @@ function buttonSwap(type){
     default:
       console.log("I don't have a button for: "+type);
   }
-}
-
-// D3 Shit
-
-var updateData = function(){
-  var TaskArray = JSON.parse(localStorage.getItem('taskArray'));
-  currentTask = {
-    'id': new Date().getTime(),
-    'task': document.getElementById('taskInput').value,
-    'complete': true
-  };
-  console.log(currentTask);
-  TaskArray.push(currentTask);
-  localStorage.setItem('taskArray', JSON.stringify(TaskArray));
-
-  //sessionStorage.setItem('taskArray', JSON.stringify(holdTask));  
-};
-
- 
-// [
-//   {
-//     'id': '11144414414441',
-//     'task': 'Add framework logic',
-//     'complete': true 
-//   },{
-//     'id': '1223412341235',
-//     'task': 'Bugfix Issue #333',
-//     'complete': false 
-//   },
-
-// ];
-var done = '<span><i class="fa fa-check-square-o"></i></span> - ',
-    reset = '<span><i class="fa fa-ban"></i></span> - ';
-
-function taskList(){
-  var data = JSON.parse(localStorage.getItem('taskArray'));
-  console.log(data);
-  d3.select('#task-list').selectAll('*').remove();
-  d3.select('#task-list')
-    .selectAll('ul')
-    .data(data)
-    .enter()
-    .append('li')
-    .attr('class', 'task')
-
-      .html(function(d){return d.complete == true ? done:reset;})
-      .append('span')
-      .text(function(d){return d.task;});
-}
-
-// Test shit
-d3.select("#nThing").on("input", function() {
-  update(this.value);
-});
-
-function update(nThing) {
-localStorage.setItem('nThing', {nThing});
-  // adjust the text on the range slider
-  // d3.select("#nRadius-value").text(nRadius);
-  // d3.select("#nRadius").property("value", nRadius);
 
 }
-
-
 
 // Sets everything up when the document is ready 
-//$(document).ready(function(){
-//  displayTime(time);
-//});
+$(document).ready(function(){
+  displayTime(time);
+});
