@@ -87,6 +87,7 @@ function buttonSwap(type){
 }
 
 // D3 Shit
+d3.select('#taskButton').on('click', function(){ updateData(); taskList();})
 
 var updateData = function(){
   var TaskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
@@ -134,18 +135,9 @@ function taskList(){
       .text(function(d){return d.task;});
 }
 
-// Test shit
-d3.select("#nThing").on("input", function() {
-  update(this.value);
+document.addEventListener('DOMContentLoaded', function() {
+ taskList();
 });
-
-function update(nThing) {
-localStorage.setItem('nThing', nThing);
-  // adjust the text on the range slider
-  // d3.select("#nRadius-value").text(nRadius);
-  // d3.select("#nRadius").property("value", nRadius);
-
-}
 
 
 
