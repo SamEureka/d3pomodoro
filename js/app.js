@@ -86,7 +86,10 @@ function buttonSwap(type){
   }
 }
 
-// D3 Shit
+// D3 code
+
+// Adds click function to Add Task button
+d3.select('#taskButton').on('click', function(){ updateData(); taskList();})
 
 var updateData = function(){
   var TaskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
@@ -95,11 +98,9 @@ var updateData = function(){
     'task': document.getElementById('taskInput').value,
     'complete': true
   };
-  console.log(currentTask);
+  document.getElementById('taskInput').value = "";
   TaskArray.push(currentTask);
   localStorage.setItem('taskArray', JSON.stringify(TaskArray));
-
-  //sessionStorage.setItem('taskArray', JSON.stringify(holdTask));  
 };
 
  
@@ -115,12 +116,11 @@ var updateData = function(){
 //   },
 
 // ];
-var done = '<span><i class="fa fa-check-square-o"></i></span> - ',
-    reset = '<span><i class="fa fa-ban"></i></span> - ';
+// var done = '<span><i class="fa fa-check-square-o"></i></span> - ',
+//     reset = '<span><i class="fa fa-ban"></i></span> - ';
 
 function taskList(){
   var data = JSON.parse(localStorage.getItem('taskArray'));
-  console.log(data);
   d3.select('#task-list').selectAll('*').remove();
   d3.select('#task-list')
     .selectAll('ul')
@@ -129,23 +129,14 @@ function taskList(){
     .append('li')
     .attr('class', 'task')
 
-      .html(function(d){return d.complete == true ? done:reset;})
+      .html(function(d){return d.complete == true ? junkFactory('done'):junkFactory('reset');})
       .append('span')
       .text(function(d){return d.task;});
 }
 
-// Test shit
-d3.select("#nThing").on("input", function() {
-  update(this.value);
+document.addEventListener('DOMContentLoaded', function() {
+ taskList();
 });
-
-function update(nThing) {
-localStorage.setItem('nThing', nThing);
-  // adjust the text on the range slider
-  // d3.select("#nRadius-value").text(nRadius);
-  // d3.select("#nRadius").property("value", nRadius);
-
-}
 
 
 
