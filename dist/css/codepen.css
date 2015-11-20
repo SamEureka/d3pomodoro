@@ -1,0 +1,85 @@
+body {
+  background-color: #222;
+}
+
+div {
+  font-size: 10rem;
+  text-align: center;
+  background-color: #EEE;
+}
+
+.pointing {
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.box {
+  top: 5px;
+  left: 5px;
+  position: fixed;
+  width: 340px;
+  height: 340px;
+  border: 24px solid #666;
+  border-radius: 8px;
+}
+
+.btns {
+  display: inline-block;
+  width: 50%;
+  float: left;
+}
+
+.grey {
+  color: #666;
+}
+
+.light-grey {
+  color: #CCC;
+}
+
+.red {
+  color: #800000;
+}
+
+.green {
+  color: #004700;
+}
+
+#slidedown {
+  background: #FFF;
+  color: #333;
+  font-size: 12px;
+  position: fixed;
+  top: -1000px;
+  left: 37px;
+  height: 500px;
+  width: 324px;
+  box-shadow: 0 0 5px rgba(0,0,0,.3); 
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+#slidedown form {
+  display: block;
+}
+
+#slidedown text {
+  display:block;
+  left: 30px;
+  height: 20px;
+  margin-bottom: 6px;
+  width: 100px;
+} 
+
+#slidedown.on {
+  top: 0;
+}
+
+.task {
+  font-size: 16px;
+}
