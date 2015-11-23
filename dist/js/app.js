@@ -88,6 +88,9 @@ function buttonSwap(type){
 
 // D3 code
 
+// Adds click function to close slider
+d3. 
+
 // Adds click function to Add Task button
 d3.select('#taskButton').on('click', function(){ updateData(); taskList();})
 

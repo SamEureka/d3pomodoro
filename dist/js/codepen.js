@@ -81,6 +81,8 @@ function toggleList(toggle){
   toggle == 'on' ? d3.select('#slidedown').attr('class', 'on'):d3.select('#slidedown').attr('class', 'off');  
 }
 
+d3.select('#close').on('click', toggleList);
+
   // Sets everything up when the DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   setTime(range);
