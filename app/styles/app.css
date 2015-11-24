@@ -89,8 +89,8 @@ div {
   position: fixed;
   width: 640px;
   height: 640px;
-  border: 24px solid #666;
-  border-radius: 8px;
+  /*border: 24px solid #666;*/
+  /*border-radius: 8px;*/
 }
 
 .btns {
