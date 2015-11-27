@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask( 'run', [ 'hapi', 'watch' ]);
 
-    grunt.registerTask( 'pages', [ 'copy', 'gh-pages' ]);
+    grunt.registerTask( 'pages', [ 'clean', 'copy', 'gh-pages' ]);
 
     grunt.initConfig({
 
@@ -72,7 +72,8 @@ module.exports = function(grunt) {
             },
             cname: {
                 files: {
-                    '.dist/CNAME': './CNAME'
+                    '.grunt/grunt-gh-pages/gh-pages/src/CNAME': './CNAME',
+                    'dist/CNAME': './CNAME'
                 }
             }
         },
