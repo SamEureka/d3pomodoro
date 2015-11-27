@@ -1,127 +1,95 @@
+// Global vars
+var interval = null;
+var range = 3;
+var run = false;
 
-
-// Global variables
-var interval = null,
-    time = 65,
-    onBreak = false,
-    workUnits = 0,
-    alarm = new buzz.sound("/sounds/ring.mp3", {preload: true}),
-    currentTask = {};
-
-// Starts the interval, calls timer function 
-var startTimer = function(){
-    interval = setInterval(timer, 1000);
-    buttonSwap('reset');
+// Sets a time key/value pair in session storage
+function setTime(vTime) {
+  sessionStorage.setItem('time', vTime);
 }
 
-// Checks the onBreak variable, decrements time, 
-// sets break or resets, calls display function
-var timer = function(){
-  time === 0 ? reset() : time--;
-  displayTime(time);
+// Retreives the time value from session storage
+function getTime() {
+  var time = sessionStorage.getItem('time');
+  return time;
+}
+
+// Decrements the time value in session storage 
+function decTime() {
+  var dt = getTime();
+  dt--;
+  setTime(dt);
+}
+
+// Sets time to 30 seconds and starts the interval
+function startTimer() {
+  noThumb();
+  check();
+  greyThat();
+}
+
+// Starts it or tells the console that things are already running
+var check = function() {
+  getTime() === range.toString() ? interval = setInterval(timer, 1000) : console.log('Dude, you already clicked it!');
+  run = true;
 };
 
-var reset = function(){
+// Checks if time value is 0, if 0 we are done, if not decrement time and display
+function timer() {
+  getTime() === '0' ? done() : decTime();
+  displayTime();
+}
+
+// Resets the timer
+function reset() {
   clearInterval(interval);
-  if (time === 0 && onBreak){
-    buttonSwap('work');
-    playSound();
-  } else if (time === 0 && !onBreak){
-    buttonSwap('break');
-    workUnits++;
-    playSound();
-   } else if (!onBreak){
-    buttonSwap('work')
-  } else {
-    buttonSwap('break');
+  setTime(range);
+  noThumb();
+  run = false;
+  displayTime();
+  greyThat();
+}
+
+// Displays the time
+function displayTime() {
+  d3.select('#out').text(getTime());
+}
+
+// Displays giant thumb when you hit 0
+function done() {
+  clearInterval(interval);
+  setTime(range);
+  run = false;
+  greyThat();
+  d3.select('#done').html('<i class="fa fa-thumbs-o-up green"></i>');
+}
+
+// Turns the thumb into the ban symbol
+function noThumb() {
+  d3.select('#done').html('<i class="fa fa-ban red"></i>');
+}
+
+function greyThat() {
+    if (run) {
+      d3.select('#clock').attr('class', 'fa fa-clock-o light-grey');
+    } else {
+      d3.select('#clock').attr('class', 'fa fa-clock-o grey');
+    }
   }
-  displayTime(time);
-};
 
-// Converts total seconds into minutes and seconds in the desired display format
-function formatTime(seconds){
-    var min = Math.floor(seconds/60);
-    var sec = Math.floor(seconds%60);
-  min === 0 ? min = "" : min;
-  sec < 10 ? sec = '0'+sec : sec;
-  return min+':'+sec;
+function toggleList(toggle){
+  toggle == 'on' ? d3.select('#slidedown').attr('class', 'on'):d3.select('#slidedown').attr('class', 'off');  
 }
 
-function resetWork(){
-  if (workUnits > 4){workUnits = 0;}
-}
+d3.select('#close').on('click', toggleList);
 
-function setBreakTime(){
-  if (workUnits === 4){time = 65;} else {time = 10;}
-}
+  // Sets everything up when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  setTime(range);
+  displayTime();
+});
 
-// Sends time to the DOM
-function displayTime(time){
- $('#displayNow').html(formatTime(time));
-}
-
-function playSound(){
-alarm.play();
-}
-
-// Swaps the button and click
-function buttonSwap(type){
-  switch (type) {
-    case 'work':
-      $('#btn').attr({'class': 'btn btn-md btn-primary btn-block', value: 'Work', onclick: 'startTimer()'});
-      time = 65;
-      onBreak = false;
-      resetWork();
-      break;
-    case 'break':
-      $('#btn').attr({'class': 'btn btn-md btn-success btn-block', value: 'Break', onclick: 'startTimer()'});
-      onBreak = true;
-      setBreakTime();
-      break;
-    case 'reset':
-      $('#btn').attr({'class': 'btn btn-md btn-danger btn-block', value: 'Reset', onclick:'reset()'});
-      break;
-    default:
-      console.log("I don't have a button for: "+type);
-  }
-}
-
-// D3 code
-
-// Adds click function to close slider
-d3. 
-
-// Adds click function to Add Task button
-d3.select('#taskButton').on('click', function(){ updateData(); taskList();})
-
-var updateData = function(){
-  var TaskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
-  currentTask = {
-    'id': new Date().getTime(),
-    'task': document.getElementById('taskInput').value,
-    'complete': true
-  };
-  document.getElementById('taskInput').value = "";
-  TaskArray.push(currentTask);
-  localStorage.setItem('taskArray', JSON.stringify(TaskArray));
-};
-
- 
-// [
-//   {
-//     'id': '11144414414441',
-//     'task': 'Add framework logic',
-//     'complete': true 
-//   },{
-//     'id': '1223412341235',
-//     'task': 'Bugfix Issue #333',
-//     'complete': false 
-//   },
-
-// ];
-// var done = '<span><i class="fa fa-check-square-o"></i></span> - ',
-//     reset = '<span><i class="fa fa-ban"></i></span> - ';
-
+// Code from app.js
 function taskList(){
   var data = JSON.parse(localStorage.getItem('taskArray'));
   d3.select('#task-list').selectAll('*').remove();
@@ -140,10 +108,3 @@ function taskList(){
 document.addEventListener('DOMContentLoaded', function() {
  taskList();
 });
-
-
-
-// Sets everything up when the document is ready 
-//$(document).ready(function(){
-//  displayTime(time);
-//});
