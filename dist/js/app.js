@@ -81,7 +81,11 @@ function toggleList(toggle){
   toggle == 'on' ? d3.select('#slidedown').attr('class', 'on'):d3.select('#slidedown').attr('class', 'off');  
 }
 
+// closes
 d3.select('#close').on('click', toggleList);
+
+// reverses
+d3.select('#reverse').on('click', reverseIt);
 
   // Sets everything up when the DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -103,6 +107,14 @@ function taskList(){
       .html(function(d){return d.complete == true ? junkFactory('done'):junkFactory('reset');})
       .append('span')
       .text(function(d){return d.task;});
+}
+
+// Reverse sort the task list
+function reverseIt() {
+  var reverseTemp = JSON.parse(localStorage.getItem('taskArray'));
+  reverseTemp.reverse();
+  localStorage.setItem('taskArray', JSON.stringify(reverseTemp));
+  taskList();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
