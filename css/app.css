@@ -88,6 +88,7 @@ div {
   width: 230px;
   text-align: left;
   border-radius: 0;
+  outline: none;
   box-shadow: 0 0 1px rgba(0,0,0,.5);
   background-color: rgba(204,204,204,0.5);
 }
@@ -118,6 +119,12 @@ div {
   cursor: default;
 }
 
+#delete {
+  font-size: 18px;
+  color: rgb(128, 0, 0);
+  cursor: pointer;
+}
+
 #slidedown text {
   display:block;
   left: 30px;
@@ -128,6 +135,10 @@ div {
 
 #slidedown.on {
   top: 55px;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
 
 .task-list-div {
@@ -182,3 +193,4 @@ li {
   font-size: 16px;
   text-align: left;
 }
+
