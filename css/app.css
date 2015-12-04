@@ -112,6 +112,10 @@ div {
   cursor: pointer;
 }
 
+#out {
+  cursor: default;
+}
+
 #slidedown text {
   display:block;
   left: 30px;
@@ -145,6 +149,10 @@ div {
 
   font-size: 2rem;
   text-align: left;
+}  
+  
+li {
+  cursor: default;
 }
 
 .task-done {

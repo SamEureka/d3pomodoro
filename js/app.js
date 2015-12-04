@@ -1,3 +1,5 @@
+// d3Pomodoro 
+
 // Global vars
 var interval = null;
 var range = 5;
@@ -30,6 +32,7 @@ function startTimer() {
   whatever();
 }
 
+// Displays the current task
 function whatever() {
   var taskTemp = JSON.parse(sessionStorage.getItem('taskText'));
   taskTemp === null ? taskTemp = "Task - " + JSON.parse(sessionStorage.getItem('taskTime')) : console.log("Whatever.");
@@ -39,7 +42,6 @@ function whatever() {
 // Starts it or tells the console that things are already running
 var check = function() {
   run === false ? interval = setInterval(timer, 1000) : console.log('Dude, you already clicked it!');
-  // run = true;
 };
 
 // Checks if time value is 0, if 0 we are done, if not decrement time and display
@@ -59,6 +61,7 @@ function reset() {
   clearData();
 }
 
+// If the timer is running when you click reset we are good
 function resetCheck() {
   run === true ? reset() : console.log("Nope!");
 }
@@ -88,38 +91,27 @@ function noThumb() {
   d3.select('#whatever').html('');
 }
 
-
+// Slides the tasklist stuff down
 function toggleList(toggle){
   toggle == 'on' ? d3.select('#slidedown').attr('class', 'on'):d3.select('#slidedown').attr('class', 'off');  
 }
 
 
-// closes
-d3.select('#close').on('click', toggleList);
-
-// reverses
-d3.select('#reverse').on('click', reverseIt);
-
-d3.select('#taskInput').on('input', function(){
-  sessionStorage.setItem('taskText', JSON.stringify(this.value));
-});
-
-// store tasks details in session storage
-
+// Clears details from session storage
 function clearData() {
   sessionStorage.removeItem('taskTime');
   sessionStorage.removeItem('taskComplete');
   sessionStorage.removeItem('taskText');
 }
 
-
+// Stores the task details in session storage
 function taskDetails() {
   toggleList('off');
   sessionStorage.setItem('taskTime', JSON.stringify(new Date().getTime()));
   sessionStorage.setItem('taskComplete', JSON.stringify(false));
 }
 
-// Add task code
+// Update the task array
 var updateData = function(){
   var TaskArray = JSON.parse(localStorage.getItem('taskArray')) || [];
   var taskTemp = JSON.parse(sessionStorage.getItem('taskText'));
@@ -127,7 +119,6 @@ var updateData = function(){
   currentTask = {
     'id': JSON.parse(sessionStorage.getItem('taskTime')),
     'task': taskTemp,
-    //'task': JSON.parse(sessionStorage.getItem('taskText')),
     'complete': JSON.parse(sessionStorage.getItem('taskComplete'))
   };
   document.getElementById('taskInput').value = "";
@@ -160,17 +151,19 @@ function reverseIt() {
   localStorage.setItem('taskArray', JSON.stringify(reverseTemp));
   taskList();
 }
+
+// Event handlers
 d3.select('#list').on('click', function(){toggleList('on');});
-d3.select('#clock').on('click', startTimer);
-d3.select('#please').on('click', startTimer);
+d3.selectAll('#clock, #please').on('click', startTimer);
 d3.select('#done').on('click', resetCheck);
+d3.select('#close').on('click', toggleList);
+d3.select('#reverse').on('click', reverseIt);
+d3.select('#taskInput').on('input', function(){sessionStorage.setItem('taskText', JSON.stringify(this.value));}).on('keydown', function(){var keyEvent = d3.event; if (keyEvent.keyCode === 13){startTimer()}});
 
-
-
-
-
+// Set things up when document loads
 document.addEventListener('DOMContentLoaded', function() {
   setTime(range);
   displayTime();
  taskList();
+
 });
