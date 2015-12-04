@@ -153,9 +153,17 @@ function reverseIt() {
   taskList();
 }
 
+// Delete all the tasks... because I haven't coded individual delete yet
+function confirmDelete() {
+  var del = confirm("Delete all your tasks?");
+  del === true ? localStorage.removeItem('taskArray') : console.log("Ok, we didn't delete them!");
+  taskList();
+}
+
 // Event handlers
 d3.select('#list').on('click', function(){toggleList('on');});
 d3.selectAll('#clock, #please').on('click', startTimer);
+d3.select('#delete').on('click', confirmDelete);
 d3.select('#done').on('click', resetCheck);
 d3.select('#close').on('click', toggleList);
 d3.select('#reverse').on('click', reverseIt);
