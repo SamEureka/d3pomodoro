@@ -53,6 +53,10 @@ div {
   color: #CCC;
 }
 
+.blue {
+  color: rgb(115, 106, 255);
+}
+
 .red {
   color: #800000;
 }

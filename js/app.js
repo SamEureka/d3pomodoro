@@ -37,6 +37,7 @@ function whatever() {
   var taskTemp = JSON.parse(sessionStorage.getItem('taskText'));
   taskTemp === null ? taskTemp = "Task - " + JSON.parse(sessionStorage.getItem('taskTime')) : console.log("Whatever.");
   d3.select('#whatever').html(taskTemp);
+  d3.select('#clock').html('<i class="fa fa-clock-o light-grey"></i>');
 }
 
 // Starts it or tells the console that things are already running
@@ -80,14 +81,13 @@ function done() {
   updateData();
   clearData();
   d3.select('#done').html('<i class="fa fa-thumbs-o-up green"></i>');
-  d3.select('#clock').html('<i class="fa fa-clock-o grey"></i>');
+  d3.select('#clock').html('<i class="fa fa-clock-o blue"></i>');
   d3.select('#whatever').html('');
 }
 
 // Turns the thumb into the ban symbol
 function noThumb() {
   d3.select('#done').html('<i class="fa fa-ban red"></i>');
-  d3.select('#clock').html('<i class="fa fa-clock-o light-grey"></i>');
   d3.select('#whatever').html('');
 }
 
@@ -124,6 +124,7 @@ var updateData = function(){
   document.getElementById('taskInput').value = "";
   TaskArray.push(currentTask);
   localStorage.setItem('taskArray', JSON.stringify(TaskArray));
+  d3.select('#clock').html('<i class="fa fa-clock-o blue"></i>');
   taskList();
 };
 
