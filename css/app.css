@@ -34,8 +34,6 @@ div {
   position: fixed;
   width: 350px;
   height: 100%;
-  /*border: 24px solid #666;*/
-  /*border-radius: 8px;*/
 }
 
 .btns {
@@ -58,11 +56,11 @@ div {
 }
 
 .red {
-  color: #800000;
+  color: rgb(128, 0, 0);
 }
 
 .green {
-  color: #004700;
+  color: rgb(3, 174, 74);
 }
 
 #slidedown {
@@ -90,7 +88,7 @@ div {
   width: 230px;
   text-align: left;
   border-radius: 0;
-  border: 1px dotted black;
+  box-shadow: 0 0 1px rgba(0,0,0,.5);
   background-color: rgba(204,204,204,0.5);
 }
 
