@@ -157,6 +157,7 @@ function reverseIt() {
 function confirmDelete() {
   var del = confirm("Delete all your tasks?");
   del === true ? localStorage.removeItem('taskArray') : console.log("Ok, we didn't delete them!");
+  taskList();
 }
 
 // Event handlers
