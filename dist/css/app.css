@@ -156,6 +156,8 @@ div {
   width: 320px;
   border-radius: 0px;
   background-color: #fff;
+  height: 500px;
+  overflow-y: scroll;
 }
 
 #whatever {
