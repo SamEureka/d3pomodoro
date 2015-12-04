@@ -2,7 +2,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pomodoro D3</title>
+    <title>d3Pomodoro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -12,20 +12,22 @@
   <div class="headerBox grey"><p>d3Pomodoro</p>
   </div>
   <div class="box">
-    <div class="grey btns pointing"><i id="clock" class="fa fa-clock-o grey"></i></div>
-    <div class="grey btns pointing"><i id="list" class="fa fa-list-ul"></i></div>
+    <div class="grey btns pointing" id="clock"><i class="fa fa-clock-o blue"></i></div>
+    <div class="grey btns pointing" id="list"><i class="fa fa-list-ul"></i></div>
     <div class="grey btns bold" id="out">3</div>
     <div class="grey btns" id="done"><i class="fa fa-ban red"></i></div>
-    <div class="">
+    <div id="whatever"></div>
   </div>
 
-  <div id="slidedown">
+  <div id="slidedown" >
     <div class="headerBox grey"><p>d3Pomodoro</p></div>
-    <div id="taskInput" contenteditiable="true">Bonus</div>
-    <i id="please" class="fa fa-plus fa-3x"></i>
-    <i id="reverse" class="fa fa-sort fa-3x"></i>
-    <i id="close" class="fa fa-times fa-3x"></i>
-    <ul id="task-list"></ul>
+    <input type="text" id="taskInput"></input>
+    <i id="please" class="fa fa-plus fa-2x"></i>
+    <i id="reverse" class="fa fa-sort fa-2x"></i>
+    <i id="close" class="fa fa-times fa-2x"></i>
+    
+    <div class="task-list-div"><ul id="task-list"></ul></div>
+  
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
   <script src="/js/app.js"></script>

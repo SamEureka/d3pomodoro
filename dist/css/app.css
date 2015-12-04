@@ -17,9 +17,10 @@ div {
   height: 50px;
   width: 350px;
   text-align: center;
+  z-index: 100;
 }
 
-.pointing {
+.pointing, #done {
   cursor: pointer;
 }
 
@@ -52,6 +53,10 @@ div {
   color: #CCC;
 }
 
+.blue {
+  color: rgb(115, 106, 255);
+}
+
 .red {
   color: #800000;
 }
@@ -68,7 +73,7 @@ div {
   padding-top: 10px;
   top: -1000px;
   left: 5px;
-  height: 500px;
+  height: 100%;
   width: 340px;
   box-shadow: 0 0 5px rgba(0,0,0,.5); 
   -webkit-transition-duration: 0.5s;
@@ -78,35 +83,41 @@ div {
 }
 
 #taskInput {
-  position: relative;
-  left: 5px;
-  font-size: 2em;
+  position: absolute;
+  left: 10px;
+  font-size: 1.5em;
   height: 40px;
-  width: 200px;
+  width: 230px;
   text-align: left;
+  border-radius: 0;
   border: 1px dotted black;
+  background-color: rgba(204,204,204,0.5);
 }
 
 #close {
-  position: relative;
-  top: 10px;
-  right: 5px;
+  position: absolute;
+  top: 17px;
+  left: 305px;
   cursor: pointer;
 
 }
 
 #reverse {
-  position: relative;
-  top: 10px;
-  right: 5px;
+  position: absolute;
+  top: 17px;
+  left: 280px;
   cursor: pointer;
 }
 
 #please {
-  position: relative;
-  top: 10px;
-  right: 5px;
+  position: absolute;
+  top: 17px;
+  left: 250px;
   cursor: pointer;
+}
+
+#out {
+  cursor: default;
 }
 
 #slidedown text {
@@ -121,14 +132,36 @@ div {
   top: 55px;
 }
 
+.task-list-div {
+  position: absolute;
+  top: 65px;
+  left: 10px;
+  width: 320px;
+  border-radius: 0px;
+  background-color: #fff;
+}
+
+#whatever {
+  position: absolute;
+  top: 240px;
+  left: 30px;
+  font-size: 2.5rem;
+  width: 291px;
+}
+
 .task-list {
+
   font-size: 2rem;
   text-align: left;
+}  
+  
+li {
+  cursor: default;
 }
 
 .task-done {
   /*background-color: rgba(80, 195, 85, 0.50);*/
-  padding-left: 30px;
+  padding-left: 10px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 3px;
   padding-top: 2px;
@@ -140,7 +173,7 @@ div {
 
 .task {
   /*background-color: rgba(255, 0, 0, 0.50);*/
-  padding-left: 30px;
+  padding-left: 10px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 3px;
   padding-top: 2px;
