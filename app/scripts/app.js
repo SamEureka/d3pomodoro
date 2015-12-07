@@ -1,4 +1,4 @@
-// d3Pomodoro 
+// d3Pomodoro
 
 // Global vars
 var interval = null;
@@ -16,7 +16,7 @@ function getTime() {
   return time;
 }
 
-// Decrements the time value in session storage 
+// Decrements the time value in session storage
 function decTime() {
   var dt = getTime();
   dt--;
@@ -93,7 +93,7 @@ function noThumb() {
 
 // Slides the tasklist stuff down
 function toggleList(toggle){
-  toggle == 'on' ? d3.select('#slidedown').attr('class', 'on'):d3.select('#slidedown').attr('class', 'off');  
+  toggle == 'on' ? d3.select('#slidedown').attr('class', 'on'):d3.select('#slidedown').attr('class', 'off');
 }
 
 
@@ -121,7 +121,7 @@ var updateData = function(){
     'task': taskTemp,
     'complete': JSON.parse(sessionStorage.getItem('taskComplete'))
   };
-  document.getElementById('taskInput').value = "";
+  d3.select('#taskInput').property('value', "");
   TaskArray.push(currentTask);
   localStorage.setItem('taskArray', JSON.stringify(TaskArray));
   d3.select('#clock').html('<i class="fa fa-clock-o blue"></i>');
@@ -167,7 +167,13 @@ d3.select('#delete').on('click', confirmDelete);
 d3.select('#done').on('click', resetCheck);
 d3.select('#close').on('click', toggleList);
 d3.select('#reverse').on('click', reverseIt);
-d3.select('#taskInput').on('input', function(){sessionStorage.setItem('taskText', JSON.stringify(this.value));}).on('keydown', function(){var keyEvent = d3.event; if (keyEvent.keyCode === 13){startTimer()}});
+d3.select('#taskInput')
+  .on('input', function(){
+    sessionStorage.setItem('taskText', JSON.stringify(this.value));})
+  .on('keydown', function(){
+    var keyEvent = d3.event; if (keyEvent.keyCode === 13){
+      startTimer()
+    }});
 
 // Set things up when document loads
 document.addEventListener('DOMContentLoaded', function() {
