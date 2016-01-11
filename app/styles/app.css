@@ -1,0 +1,206 @@
+body {
+  background: repeating-linear-gradient(
+    
+    #222,
+    #222 20px,
+    #333 20px,
+    #333 40px
+    
+    );
+  line-height: 1;
+}
+
+div {
+  font-size: 10rem;
+  text-align: center;
+  background-color: #EEE;
+}
+
+.headerBox {
+  font-size: 5rem;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+  width: 350px;
+  box-shadow: 0 4px 2px -2px gray;
+  text-align: center;
+  z-index: 100;
+}
+
+.pointing, #done {
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.box {
+  top: 50px;
+  left: 0px;
+  position: fixed;
+  width: 350px;
+  height: 100%;
+}
+
+.btns {
+  margin: 5px;
+  display: inline-block;
+  width: 45%;
+  float: left;
+}
+
+.grey {
+  color: #666;
+}
+
+.light-grey {
+  color: #CCC;
+}
+
+.blue {
+  color: rgb(115, 106, 255);
+}
+
+.red {
+  color: rgb(128, 0, 0);
+}
+
+.green {
+  color: rgb(3, 174, 74);
+}
+
+#slidedown {
+  background: #FFF;
+  color: #333;
+  font-size: 12px;
+  position: fixed;
+  padding-top: 10px;
+  top: -1000px;
+  left: 5px;
+  height: 100%;
+  width: 340px;
+  box-shadow: 0 0 5px rgba(0,0,0,.5); 
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+#taskInput {
+  position: absolute;
+  left: 10px;
+  font-size: 1.5em;
+  height: 40px;
+  width: 230px;
+  text-align: left;
+  border-radius: 0;
+  outline: none;
+  box-shadow: 0 0 1px rgba(0,0,0,.5);
+  background-color: rgba(204,204,204,0.5);
+}
+
+#close {
+  position: absolute;
+  top: 17px;
+  left: 305px;
+  cursor: pointer;
+
+}
+
+#reverse {
+  position: absolute;
+  top: 17px;
+  left: 280px;
+  cursor: pointer;
+}
+
+#please {
+  position: absolute;
+  top: 17px;
+  left: 250px;
+  cursor: pointer;
+}
+
+#out {
+  cursor: default;
+}
+
+#delete {
+  font-size: 18px;
+  color: rgb(128, 0, 0);
+  cursor: pointer;
+}
+
+#slidedown text {
+  display:block;
+  left: 30px;
+  height: 20px;
+  margin-bottom: 6px;
+  width: 100px;
+} 
+
+#slidedown.on {
+  top: 55px;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.task-list-div {
+  position: absolute;
+  top: 65px;
+  left: 10px;
+  width: 320px;
+  border-radius: 0px;
+  background-color: #fff;
+  height: 500px;
+  overflow-y: scroll;
+}
+
+#whatever {
+  position: absolute;
+  top: 240px;
+  left: 30px;
+  font-size: 2.5rem;
+  width: 291px;
+}
+
+.task-list {
+
+  font-size: 2rem;
+  text-align: left;
+}  
+  
+li {
+  cursor: default;
+}
+
+.task-done {
+  /*background-color: rgba(80, 195, 85, 0.50);*/
+  padding-left: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3px;
+  padding-top: 2px;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 2px;
+  list-style: none;
+}
+
+.task {
+  /*background-color: rgba(255, 0, 0, 0.50);*/
+  padding-left: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3px;
+  padding-top: 2px;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-radius: 2px;
+  list-style: none;
+  font-size: 16px;
+  text-align: left;
+}
+
